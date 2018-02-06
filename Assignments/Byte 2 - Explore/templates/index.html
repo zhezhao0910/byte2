@@ -55,11 +55,12 @@
     </div> <!-- /container -->
     
     <div class="button-toolbar" role="toolbar" id="headers" name="headers">
-      {% for column in allheaders %}
+      {% for column in columns %}
       <button type="button" class = "btn-space btn btn-info" id="{{column}}" onclick="updateTable('{{column}}')">{{column}}</button>
       {% endfor %}
     </div>
     
+    <!--
     <div id="animals"><table id="data" class="table table-striped table-hover">
 	<thead class ="thead-inverse">
 	  <tr id="cols">
@@ -68,7 +69,30 @@
 	<tbody id="rows"> 
 	</tbody>
     </table></div>
-
+  -->
+  
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead class="thead-inverse">
+       <tr id="cols">
+    {% for item in columns %}
+             <th>{{ item }}</th>
+    {% endfor %}
+         </tr>
+        </thead>
+        <tbody id="rows">
+    {% for row in rows %}
+         <tr>
+      {% for datum in row %}
+                <td>{{ datum }} </td>
+      {% endfor %}
+         </tr>
+    {% endfor %}
+        </tbody>
+     </table>
+  </div>
+  
+  
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
