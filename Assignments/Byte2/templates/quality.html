@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+    <title>Quality of This Data</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/theme.css" rel="stylesheet">
+  </head>
+
+  <body role="document">
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="about">About This Data Set</a></li>
+	    <li  class="active"><a href="quality">Data Quality</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container theme-showcase" role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+	<h1>Quality: About This Data Set</h1>
+        <p>In general, the quality of the data is good because of its correctness. It's complete if we want to use it to answer
+        simple questions, but insufficient to answer more complex questions. Although the raw data is not coherent, but after correct the 
+        data type based on domain related knowledge, it become coherent.</a></p>
+      </div>
+
+    
+      <div class="page-header">
+	<h2>Is the data complete?</h2>
+	<p>Whether the data is complete depends on the <b>'question'</b> we want to answer. If the question is 'Which country won the most goals',
+	then the data is complete. You can group the score team by row counts and rank teams, you will find the answer is Germany 
+	(16 goals in all). As shown in chart below.</p>
+	<p>If the question is 'How star players in a team influence its number of goals', the data is not complete because
+	it lacks a column to specify the whom of those scorers are known as 'star player'. 
+	</p>
+      </div>
+<iframe width="750" height="450" scrolling="no" frameborder="no" src="https://fusiontables.google.com/embedviz?containerId=googft-gviz-canvas&amp;q=select+col0%2C+col1+from+1IKUXEmqNKRrOT8dKBb5ZP9Yb3kG7l_wGiTtRBsJC+order+by+col1+asc+limit+30&amp;viz=GVIZ&amp;t=BAR&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_useFirstColumnAsDomain=true&amp;gco_legacyScatterChartLabels=true&amp;gco_isStacked=false&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22logScale%22%3Afalse%7D&amp;gco_vAxes=%5B%7B%22useFormatFromData%22%3Atrue%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22viewWindow%22%3Anull%2C+%22viewWindowMode%22%3Anull%7D%2C%7B%22useFormatFromData%22%3Atrue%7D%5D&amp;gco_legend=right&amp;gco_title=Goals+at+the+2010+World+Cup+(by+country%2Fregion)&amp;gco_domainAxis=%7B%22direction%22%3A-1%7D&amp;gco_backgroundColor=%7B%22fill%22%3A%22%23f3f3f3%22%7D&amp;gco_titleTextStyle=%7B%22color%22%3A%22%23000%22%2C+%22fontSize%22%3A%2214%22%2C+%22bold%22%3Atrue%7D&amp;att=true&amp;width=750&amp;height=435"></iframe>
+      <div class="page-header">
+	<h2>Is the data coherent?</h2>
+	<p>This data is NOT coherent before cleaning because in the column of 'minute of goal', the field data type of some rows is not correct. 
+	It should be a 'number', but appears to be '90+#' or '45+#'. However, according to domain related knowledge (world cup rules), we know the meaning of
+	these data. '45+#' means that the goal was scored in the extra time of the first half match, while '90+#' means the goal was scored in extra time
+	of the second half of the match. Therefore I manually correct these fields by add up the normal time and extra time and reset the range of 'minute of goal' field:
+	<br>MAX TIME = 45+15+45+15=120 min
+	<br>MIN TIME > 0 min
+	<br>You can see the comparison of data before and after correcting in the two graghs below:
+	</p>
+      </div>
+    <iframe width="750" height="450" scrolling="no" frameborder="no" src="https://fusiontables.google.com/embedviz?containerId=googft-gviz-canvas&amp;q=select+col0%2C+col2+from+1f4qISKgkhHhQpWxS50nZnjLdRK4koIj4xzkB9Hmr+order+by+col2+asc+limit+100&amp;viz=GVIZ&amp;t=COLUMN&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_vAxes=%5B%7B%22title%22%3Anull%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_useFirstColumnAsDomain=true&amp;gco_legacyScatterChartLabels=true&amp;gco_isStacked=false&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22viewWindow%22%3Anull%2C+%22viewWindowMode%22%3Anull%7D&amp;gco_legend=right&amp;gco_title=Before+cleaning%3A+Missing+numeric+values&amp;gco_backgroundColor=%7B%22fill%22%3A%22%23f3f3f3%22%7D&amp;gco_titleTextStyle=%7B%22color%22%3A%22%23000%22%2C+%22fontSize%22%3A%2214%22%2C+%22bold%22%3Atrue%7D&amp;att=true&amp;width=750&amp;height=435"></iframe>
+   
+     <iframe width="750" height="450" scrolling="no" frameborder="no" src="https://fusiontables.google.com/embedviz?containerId=googft-gviz-canvas&amp;q=select+col0%2C+col2+from+1y9O0yDSu0mTaDzvRlRW3Mm9lj0A9xxLCEEbYng6b+order+by+col2+asc+limit+100&amp;viz=GVIZ&amp;t=COLUMN&amp;uiversion=2&amp;gco_forceIFrame=true&amp;gco_hasLabelsColumn=true&amp;gco_vAxes=%5B%7B%22title%22%3Anull%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%7D%2C%7B%22useFormatFromData%22%3Atrue%2C+%22viewWindow%22%3A%7B%22max%22%3Anull%2C+%22min%22%3Anull%7D%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%7D%5D&amp;gco_useFirstColumnAsDomain=true&amp;gco_legacyScatterChartLabels=true&amp;gco_isStacked=false&amp;gco_booleanRole=certainty&amp;gco_hAxis=%7B%22useFormatFromData%22%3Atrue%2C+%22minValue%22%3Anull%2C+%22maxValue%22%3Anull%2C+%22viewWindow%22%3Anull%2C+%22viewWindowMode%22%3Anull%7D&amp;gco_legend=right&amp;gco_titleTextStyle=%7B%22color%22%3A%22%23000%22%2C+%22fontSize%22%3A%2214%22%2C+%22bold%22%3Atrue%7D&amp;gco_title=After+cleaning%3A+all+numeric+data&amp;att=true&amp;width=750&amp;height=435"></iframe> 
+      <div class="page-header">
+      
+	<h2>Is the data correct?</h2>
+	<p>The data is correct. I verify from three aspects: measure error, fraudulent data and implementation issue. 
+	<br>- Measure error: This data was objective and public, so it has few measure errors.
+	<br>- Fraudulent data: I use secondary data to verify the correctness of data. From other data source 
+	(such as <a href='https://www.fifa.com/worldcup/archive/southafrica2010/statistics/index.html'>FIFA Offical Website</a>), 
+	we know that there 32 teams participated in 64 games and totally scored 145 goal. By comparing the result, the data is proved to be
+	correct.
+	<br>- Implementation issue: no algorithms were applied to the data and few second time processing traces. So there is few implementation issues. 
+	</p>
+      </div>
+      
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/docs.min.js"></script>
+  </body>
+</html>
